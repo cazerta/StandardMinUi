@@ -1,0 +1,9 @@
+## Interface: 70300
+
+## Title: Standard Minimalistc UI
+## Notes: Minimalistc UI using the standard Blizzard Interface
+## Notes-ptBR: Interface minimalista usando recursos padrões da Blizzard.
+## Author: Pell
+## Version: v0.1
+
+StandardMinUi.lua
