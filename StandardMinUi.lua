@@ -29,16 +29,23 @@ local f = CreateFrame("FRAME");
 f:RegisterEvent("PLAYER_ENTERING_WORLD"); --Event that fires on loadingscreens
 f:RegisterEvent("RAID_ROSTER_UPDATE");
 f:RegisterEvent("PARTY_MEMBERS_CHANGED");
+f:RegisterEvent("PLAYER_REGEN_DISABLED")
+f:RegisterEvent("PLAYER_REGEN_ENABLED")
 f:SetScript("OnEvent", function(self, event, ...)
-	print('fired')
-	print(IsInRaid())
-	
-	--print('UnitInRaid: ' .. UnitInRaid('player'))
 	if IsInRaid() then --if player is in raid hides objective tracker else shows it
-		print("TRIGGER InRaind() - Escondendo objetivos")
 		ObjectiveTrackerFrame:Hide();
 	else
 		ObjectiveTrackerFrame:Show();
+	end
+	
+	if (event == "PLAYER_REGEN_DISABLED") then
+		--print('EM COMBATE')
+		PlayerFrame:SetAlpha(1)
+		TargetFrame:SetAlpha(1)
+	else
+		--print('FORA DE COMBATE')
+		PlayerFrame:SetAlpha(0.4)
+		TargetFrame:SetAlpha(0.4)
 	end
 end)
 
